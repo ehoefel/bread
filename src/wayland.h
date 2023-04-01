@@ -1,7 +1,10 @@
 #ifndef WAYLAND_H
 #define WAYLAND_H
 
+#include <wayland-client.h>
+#include <wayland-util.h>
 #include "config.h"
+//#include "listener.h"
 
 struct output_list_element {
   struct wl_list link;
@@ -35,7 +38,10 @@ struct wayland {
   struct wl_pointer *pointer;
 };
 
+//void wayland_set_listener(struct wayland *wayland, struct listener *listener);
 struct wayland wayland_create(struct config *conf);
+void wayland_init(struct wayland *wayland);
+struct wl_surface *wayland_create_surface(struct wayland *wayland);
 
 
 #endif /* WAYLAND_H */

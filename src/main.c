@@ -5,18 +5,21 @@
 
 #include "bread.h"
 #include "config.h"
+#include "log.h"
 
 int main(int argc, char *argv[])
 {
+  log_enter_context("main");
   setlocale(LC_ALL, "");
-  printf("Hello World\n");
 
+  log_debug("creating config");
   struct config conf = {
     .font_size = 24
   };
 
   struct bread bread = bread_create(&conf);
 
-  printf("Finished Execution\n");
+  log_debug("finished execution");
   return 0;
+  log_leave_context();
 }
